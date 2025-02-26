@@ -26,9 +26,6 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="hover:text-green-500">Dashboard</Link>
-      </li>
-      <li>
         <Link to="menu" className="hover:text-green-500">
           Our Menu
         </Link>
@@ -39,7 +36,7 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/">
+        <Link to="/dashboard/cart">
           <button className="btn bg-transparent/20 border-none hover:bg-orange-500">
             <FaShoppingCart className="mr-2 text-white" size={20} />
             <div className="badge badge-secondary">+{cart.length}</div>

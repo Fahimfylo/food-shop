@@ -10,6 +10,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SectionTitle/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -35,6 +36,7 @@ const Login = () => {
         Swal.fire({
           title: "User Login Successful!",
           icon: "success",
+          timer: 1500
         });
         navigate(from, { replace: true });
       })
@@ -147,6 +149,7 @@ const Login = () => {
               </p>
             </div>
             <p className="text-center py-5">Or Sign up with</p>
+            <SocialLogin/>
           </div>
         </div>
       </div>

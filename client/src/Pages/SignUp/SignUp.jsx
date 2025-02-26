@@ -6,9 +6,11 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
-
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SectionTitle/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -17,26 +19,34 @@ const SignUp = () => {
   } = useForm();
 
   const { createUser, updateUserProfile } = useContext(AuthContext);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
-      console.log(loggedUser);
+
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile updated");
-          reset()
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User created Successfully!",
-            showConfirmButton: false,
-            timer: 1500
+          // Create user entry in database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log('User added to the database');
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User created Successfully!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate('/')
         })
         .catch((error) => console.log(error));
     });
@@ -170,7 +180,8 @@ const SignUp = () => {
                 </Link>
               </p>
             </div>
-            <h1 className="text-center py-5">Or sign up with</h1>
+            <p className="text-center py-5">Or Sign up with</p>
+            <SocialLogin/>
           </div>
           <div
             className="flex-1 bg-center"
