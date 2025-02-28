@@ -4,6 +4,7 @@ import { FaRegEdit } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useMenu from "../../../hooks/useMenu";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, , refetch] = useMenu(); // Fix: Skipping loading state
@@ -74,13 +75,16 @@ const ManageItems = () => {
                   <td className="text-gray-500 font-sans font-semibold">
                     ${item.price}
                   </td>
+                  {/* Update Items */}
                   <td>
-                    <button
-                      onClick={() => console.log("Update feature pending")}
-                      className="bg-white border-none p-2 hover:bg-red-200 rounded-md shadow text-red-500"
-                    >
-                      <FaRegEdit size={22} />
-                    </button>
+                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                      <button
+                        onClick={() => console.log("Update feature pending")}
+                        className="bg-white border-none p-2 hover:bg-red-200 rounded-md shadow text-red-500"
+                      >
+                        <FaRegEdit size={22} />
+                      </button>
+                    </Link>
                   </td>
                   <td>
                     <button

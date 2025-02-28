@@ -1,17 +1,20 @@
+import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import { useForm } from "react-hook-form";
 import { GiKnifeFork } from "react-icons/gi";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from 'sweetalert2'
-
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddItems = () => {
+const UpdateItem = () => {
+  const { name, category, recipe, price, _id } = useLoaderData();
   const { register, handleSubmit, reset } = useForm();
+
   const axiosPublic = useAxiosPublic();
+
   const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (data) => {
@@ -31,14 +34,14 @@ const AddItems = () => {
         category: data.category,
         price: parseFloat(data.price),
       };
-      const menuRes = await axiosSecure.post("/menu", menuItem);
+      const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
       console.log(menuRes.data);
-      if (menuRes.data.insertedId) {
-        reset()
+      if (menuRes.data.modifiedCount > 0) {
+        reset();
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${data.name} is updated!`,
+          title: `${data.name} is added to the menu!`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -50,8 +53,8 @@ const AddItems = () => {
   return (
     <div>
       <SectionTitle
-        heading="add an item"
-        subHeading="What's new?"
+        heading="Update Item"
+        subHeading="Refresh info"
       ></SectionTitle>
       <div className="lg:w-[1200px] md:w-[550px] mt-5 p-2 mx-auto bg-slate-200 mb-10">
         <div className="m-5">
@@ -65,6 +68,7 @@ const AddItems = () => {
               <div>
                 <input
                   type="text"
+                  defaultValue={name}
                   placeholder="Recipe name"
                   {...register("name", { required: true })}
                   className="input w-full text-gray-600"
@@ -81,7 +85,7 @@ const AddItems = () => {
                 </div>
                 <div>
                   <select
-                    defaultValue="default"
+                    defaultValue={category}
                     {...register("category", { required: true })}
                     className="select w-full text-gray-600"
                   >
@@ -107,6 +111,7 @@ const AddItems = () => {
                 <div>
                   <input
                     type="number"
+                    defaultValue={price}
                     placeholder="Price"
                     {...register("price", { required: true })}
                     className="input w-full text-gray-600"
@@ -121,6 +126,7 @@ const AddItems = () => {
                 </span>
               </label>
               <textarea
+              defaultValue={recipe}
                 {...register("recipe", { required: true })}
                 className="textarea text-gray-600 md:h-24 lg:h-40 text-base"
                 placeholder="Bio"
@@ -134,7 +140,7 @@ const AddItems = () => {
               />
             </div>
             <button className="bg-gradient-to-r from-green-700 to-green-500 p-2 flex text-white font-bold">
-              Add Item{" "}
+              Update Menu Item{" "}
               <span className="pt-1 pl-1">
                 <GiKnifeFork />
               </span>
@@ -146,4 +152,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default UpdateItem;
