@@ -2,6 +2,7 @@ import useCart from "../../../hooks/useCart";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -37,18 +38,7 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="mx-auto text-center mt-20">
-        <h1 className="text-orange-500 lg:text-xl md:text-lg">
-          ---Excellent Ambience---
-        </h1>
-        <div className="flex justify-center">
-          <div className="divider lg:w-96 md:w-72"></div>
-        </div>
-        <h1 className="lg:text-4xl md:text-2xl">MY BOOKINGS</h1>
-        <div className="flex justify-center">
-          <div className="divider lg:w-96 md:w-72"></div>
-        </div>
-      </div>
+      <SectionTitle heading="my bookings" subHeading="Excellent Ambience"></SectionTitle>
 
       <div className="lg:w-[1200px] md:w-[550px] mt-5 p-2 mx-auto bg-white mb-10">
         <div className="flex justify-between items-center p-5 mb-5 font-semibold">

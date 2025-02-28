@@ -4,27 +4,36 @@ import { useQuery } from "@tanstack/react-query";
 import { MdDeleteForever } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
-      return res.data; 
+      return res.data;
     },
   });
 
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
-      console.log(res.data);
-      if (res.data.modifiedCount > 0) {
-        refetch();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `${user.name} id an Admin Now!`,
-          showConfirmButton: false,
-          timer: 1500,
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Make admin!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: `${user.name} is an Admin Now!`,
+              icon: "success",
+            });
+          }
         });
       }
     });
@@ -55,21 +64,13 @@ const AllUsers = () => {
     });
   };
 
+
   return (
     <div>
-      <div className="mx-auto text-center mt-20">
-        <h1 className="text-orange-500 lg:text-xl md:text-lg">
-          ---How many??---
-        </h1>
-        <div className="flex justify-center">
-          <div className="divider lg:w-96 md:w-72"></div>
-        </div>
-        <h1 className="lg:text-4xl md:text-2xl">MANAGE ALL USERS</h1>
-        <div className="flex justify-center">
-          <div className="divider lg:w-96 md:w-72"></div>
-        </div>
-      </div>
-
+      <SectionTitle
+        heading="MANAGE ALL USERS"
+        subHeading="---How many?---"
+      ></SectionTitle>
       <div className="lg:w-[1200px] md:w-[550px] mt-5 p-2 mx-auto bg-white mb-10">
         <div className="flex justify-between items-center p-5 mb-5 font-semibold">
           <p className="text-left lg:text-xl md:text-lg font-serif">
