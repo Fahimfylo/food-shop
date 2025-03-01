@@ -139,7 +139,7 @@ const UpdateItem = () => {
                 className="rounded-none file-input bg-transparent"
               />
             </div>
-            <button className="bg-gradient-to-r from-green-700 to-green-500 p-2 flex text-white font-bold">
+            <button className="btn bg-gradient-to-r from-green-700 to-green-500 p-2 flex text-white font-bold">
               Update Menu Item{" "}
               <span className="pt-1 pl-1">
                 <GiKnifeFork />

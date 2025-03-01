@@ -103,7 +103,7 @@ const DashBoard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/payment"
+                  to="/dashboard/paymentHistory"
                   className="hover:text-white gap-4"
                 >
                   <MdOutlinePayment size={25} />
@@ -149,7 +149,7 @@ const DashBoard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad" className="hover:text-white gap-4">
+            <NavLink to="/menu" className="hover:text-white gap-4">
               <FaHamburger size={25} />
               MENU
             </NavLink>

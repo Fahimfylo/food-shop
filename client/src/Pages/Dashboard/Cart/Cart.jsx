@@ -3,6 +3,7 @@ import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -24,7 +25,7 @@ const Cart = () => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/carts/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
-            refetch()
+            refetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
@@ -38,7 +39,10 @@ const Cart = () => {
 
   return (
     <div>
-      <SectionTitle heading="my bookings" subHeading="Excellent Ambience"></SectionTitle>
+      <SectionTitle
+        heading="my bookings"
+        subHeading="Excellent Ambience"
+      ></SectionTitle>
 
       <div className="lg:w-[1200px] md:w-[550px] mt-5 p-2 mx-auto bg-white mb-10">
         <div className="flex justify-between items-center p-5 mb-5 font-semibold">
@@ -48,9 +52,20 @@ const Cart = () => {
           <p className="flex-1 text-center lg:text-xl md:text-lg font-serif">
             TOTAL PRICE : $ {totalPrice}
           </p>
-          <button className="bg-orange-400 btn hover:bg-orange-500 text-white lg:text-lg md:text-base rounded md:p-3 font-serif">
-            PAY
-          </button>
+          {cart.length ? (
+            <Link to="/dashboard/payment">
+              <button className="bg-orange-400 btn hover:bg-orange-500 text-white lg:text-lg md:text-base rounded md:p-3 font-serif">
+                PAY
+              </button>
+            </Link>
+          ) : (
+            <button
+              disabled
+              className="bg-orange-400 btn hover:bg-orange-500 text-white lg:text-lg md:text-base rounded md:p-3 font-serif"
+            >
+              PAY
+            </button>
+          )}
         </div>
 
         <div className="overflow-x-auto mx-5">
