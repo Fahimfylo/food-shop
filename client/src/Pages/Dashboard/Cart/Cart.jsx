@@ -40,7 +40,7 @@ const Cart = () => {
   return (
     <div>
       <SectionTitle
-        heading="my bookings"
+        heading="wanna add more"
         subHeading="Excellent Ambience"
       ></SectionTitle>
 
@@ -79,7 +79,7 @@ const Cart = () => {
                 <th>PRICE</th>
                 <th>ACTION</th>
               </tr>
-            </thead>
+            </thead> 
             <tbody>
               {cart.map((item, index) => (
                 <tr

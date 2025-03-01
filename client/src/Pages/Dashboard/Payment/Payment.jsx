@@ -1,4 +1,3 @@
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
