@@ -10,8 +10,8 @@ const FoodCard = ({ item }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure = useAxiosSecure()
-  const [, refetch] = useCart()
+  const axiosSecure = useAxiosSecure();
+  const [, refetch] = useCart();
 
   const handleAddToCart = () => {
     if (user && user.email) {
@@ -31,10 +31,10 @@ const FoodCard = ({ item }) => {
             icon: "success",
             title: `${name} added to your cart!`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           // refetch cart to update the cart item count
-          refetch()
+          refetch();
         }
       });
     } else {
@@ -69,7 +69,7 @@ const FoodCard = ({ item }) => {
           <p>{recipe}</p>
           <button
             onClick={handleAddToCart}
-            className="btn text-yellow-700 bg-slate-100 w-32 mx-auto border-0 border-orange-400 hover:bg-gray-700 btn-outline border-b-2 mt-10 "
+            className="btn text-gray-500  hover:bg-orange-400 bg-slate-100 w-32 mx-auto border-0 border-orange-400 btn-outline border-b-2 mt-10 "
           >
             Add to Cart
           </button>

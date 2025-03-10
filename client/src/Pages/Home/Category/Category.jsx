@@ -20,6 +20,7 @@ const Category = () => {
         slidesPerView={4}
         spaceBetween={30}
         centeredSlides={true}
+        initialSlide={2}
         pagination={{
           clickable: true,
         }}
@@ -28,31 +29,32 @@ const Category = () => {
       >
         <SwiperSlide className="relative">
           <img src={slide1} alt="" className="w-full h-full object-cover" />
-          <h1 className="absolute inset-0 flex justify-center items-center text-3xl text-white lg:pt-96 md:pt-56 font-thin">
+          <h1 className="absolute bottom-0 left-0 right-0 flex justify-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-thin pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24">
             SALAD
           </h1>
         </SwiperSlide>
+
         <SwiperSlide className="relative">
           <img src={slide2} alt="" className="w-full h-full object-cover" />
-          <h1 className="absolute inset-0 flex justify-center items-center text-3xl text-white lg:pt-96 md:pt-56 font-thin">
+          <h1 className="absolute bottom-0 left-0 right-0 flex justify-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-thin pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24">
             PIZZA
           </h1>
         </SwiperSlide>
         <SwiperSlide className="relative">
           <img src={slide3} alt="" className="w-full h-full object-cover" />
-          <h1 className="absolute inset-0 flex justify-center items-center text-3xl text-white lg:pt-96 md:pt-56 font-thin">
+          <h1 className="absolute bottom-0 left-0 right-0 flex justify-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-thin pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24">
             SOUP
           </h1>
         </SwiperSlide>
         <SwiperSlide className="relative">
           <img src={slide4} alt="" className="w-full h-full object-cover" />
-          <h1 className="absolute inset-0 flex justify-center items-center text-3xl text-white lg:pt-96 md:pt-56 font-thin">
-            DESERT
+          <h1 className="absolute bottom-0 left-0 right-0 flex justify-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-thin pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24">
+            DESSERT
           </h1>
         </SwiperSlide>
         <SwiperSlide className="relative">
           <img src={slide1} alt="" className="w-full h-full object-cover" />
-          <h1 className="absolute inset-0 flex justify-center items-center text-3xl text-white lg:pt-96 md:pt-56 font-thin">
+          <h1 className="absolute bottom-0 left-0 right-0 flex justify-center text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-thin pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24">
             SALAD
           </h1>
         </SwiperSlide>

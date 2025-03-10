@@ -62,7 +62,7 @@ const DashBoard = () => {
                   MANAGE ITEMS
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to="/dashboard/bookings"
                   className="hover:text-white gap-4"
@@ -70,7 +70,7 @@ const DashBoard = () => {
                   <FaAddressBook size={25} />
                   MANAGE BOOKINGS
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   to="/dashboard/users"
@@ -92,7 +92,7 @@ const DashBoard = () => {
                   USER HOME
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to="/dashboard/reservation"
                   className="hover:text-white gap-4"
@@ -100,7 +100,7 @@ const DashBoard = () => {
                   <FaCalendar size={25} />
                   RESERVATION
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   to="/dashboard/paymentHistory"
@@ -119,7 +119,7 @@ const DashBoard = () => {
                   MY CART ({cart.length})
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to="/dashboard/review"
                   className="hover:text-white gap-4"
@@ -127,8 +127,8 @@ const DashBoard = () => {
                   <FaRankingStar size={25} />
                   ADD REVIEW
                 </NavLink>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <NavLink
                   to="/dashboard/bookings"
                   className="hover:text-white gap-4"
@@ -136,7 +136,7 @@ const DashBoard = () => {
                   <FaList size={25} />
                   MY BOOKINGS
                 </NavLink>
-              </li>
+              </li> */}
             </>
           )}
 

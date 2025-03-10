@@ -23,11 +23,6 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="contact" className="hover:text-green-500">
-          Contact Us
-        </Link>
-      </li>
-      <li>
         <Link to="menu" className="hover:text-green-500">
           Our Menu
         </Link>
@@ -37,14 +32,23 @@ const NavBar = () => {
           Order Food
         </Link>
       </li>
+      <li>
+        <Link to="contact" className="hover:text-green-500">
+          Contact Us
+        </Link>
+      </li>
       {user && isAdmin && (
         <li>
-          <Link to="/dashboard/adminHome">Admin-D</Link>
+          <Link to="/dashboard/adminHome">
+            <span className="hover:text-green-500">Dashboard</span>
+          </Link>
         </li>
       )}
       {user && !isAdmin && (
         <li>
-          <Link to="/dashboard/userHome">User-D</Link>
+          <Link to="/dashboard/userHome">
+            <span className="hover:text-green-500">User Home</span>
+          </Link>
         </li>
       )}
       <li>
