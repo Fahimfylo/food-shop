@@ -4,7 +4,6 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const port = process.env.PORT || 5000;
 
 // middleware
 app.use(cors());
@@ -322,20 +321,4 @@ app.get("/", (req, res) => {
   res.send("boss is running");
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello from Express on Vercel!");
-});
-
 module.exports = app;
-
-/**
- * ----------------------------
- *      Naming Convension
- * ----------------------------
- * app.get('/users)
- * app.get('/users/:id)
- * app.post('/users)
- * app.put('/users/:id)
- * app.patch('/users/:id)
- * app.delete('/users/:id)
- */
