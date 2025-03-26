@@ -148,7 +148,7 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <p className="text-center py-5">Or Sign up with</p>
+            <p className="text-center py-5">Or Sign in with</p>
             <SocialLogin/>
           </div>
         </div>
