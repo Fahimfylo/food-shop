@@ -161,7 +161,7 @@ const DashBoard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/contact" className="hover:text-white gap-4">
+            <NavLink to="/contact" className="hover:text-white gap-4">
               <FaEnvelope size={24} />
               CONTACT
             </NavLink>
